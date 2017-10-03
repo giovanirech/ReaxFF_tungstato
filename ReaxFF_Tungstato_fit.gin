@@ -1,0 +1,255 @@
+opti conp dist relax lbfgs prop fit
+
+name a1-ZrW2O8
+
+cell
+9.18 9.18 9.18 90.000000 90.000000 90.000000
+
+fractional
+Zr core 0.00130 0.00130 0.00130
+W1 core 0.34050 0.34050 0.34050
+W2 core 0.59982 0.59982 0.59982
+O1 core 0.20631 0.43920 0.44700
+O2 core 0.78662 0.56760 0.55598
+O3 core 0.49177 0.49177 0.49177
+O4 core 0.23318 0.23318 0.23318
+#O1 shel 0.20631 0.43920 0.44700
+#O2 shel 0.78662 0.56760 0.55598
+#O3 shel 0.49177 0.49177 0.49177
+#O4 shel 0.23318 0.23318 0.23318
+
+spacegroup
+198
+
+###########################################################
+######  ____                          _____   _____  ######
+###### |  _ \    ___    __ _  __  __ |  ___| |  ___| ######
+###### | |_) |  / _ \  / _` | \ \/ / | |_    | |_    ######
+###### |  _ <  |  __/ | (_| |  >  <  |  _|   |  _|   ######
+###### |_| \_\  \___|  \__,_| /_/\_\ |_|     |_|     ######
+########################################################### 
+
+#================================================================================
+#  Bond order threshold - check anglemin as this is cutof2 given in control file
+#================================================================================
+reaxFFtol       0.0001000000 0.001
+
+#================================================================================
+#  Species independent parameters 
+#================================================================================
+reaxff0_bond        50.000000     9.546900 0 0
+reaxff0_lonepair     6.089100 0
+#reaxff0_over         3.000000     2.000000     1.058800    12.117600    13.305600 0 0 0 0 0
+reaxff0_valence     33.866700     1.851200     1.056300     2.038400 0 0 0 0
+reaxff0_penalty      6.929000     0.398900     3.995400 0 0 0
+reaxff0_torsion      5.779600    10.000000     1.948700     2.164500 0 0 0 0
+reaxff0_vdw          1.559100 0
+
+#================================================================================
+#  Element parameters 
+#================================================================================
+#Specifies the electronegativity for the species in the ReaxFF charge equilibration scheme.
+#	species <core/shell> chi <1 x flag>
+reaxff_chi 
+O     core     8.500000 0
+Zr    core    -1.548900 0
+W     core    -2.500000 1
+#. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+#Specifies the hardness for the species in the ReaxFF charge equilibration scheme.
+#species <core/shell> mu <1 x flag>
+reaxff_mu
+O     core     6.958500 0
+Zr    core     6.128200 0
+W     core     7.000000 1
+
+#. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+#Specifies the shielding parameter gamma for the species in the ReaxFF charge equilibration scheme.
+#	species <core/shell> gamma <1 x flag>
+reaxff_gamma
+O     core     0.865900 0
+Zr    core     0.579200 0
+W     core     0.500000 1
+
+#================================================================================
+#  Species parameters 
+#================================================================================
+#Specifies the radii for a species that are to be used in the ReaxFF bond order calculation.
+#Here the uncorrected bond order is given by:
+#BO' = exp(p_bo1*(r/r_sigma)**p_bo2) + exp(p_bo3*(r/r_pi)**p_bo4) + exp(p_bo5*(r/r_pipi)**p_bo6)
+#The remaining parameters, p_bo1 - p_bo6, are input via the reaxff2_bo option.
+#species <core/shell> r_sigma r_pi r_pipi <3 x flags>
+reaxff1_radii 
+O     core     1.289100     1.032300     0.945600 0 0 0
+Zr    core     2.638300    -1.000000    -1.000000 0 0 0
+W     core     2.638300    -1.000000    -1.000000 1 1 1
+#. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+
+#Specifies the valence states for a species that are to be used in the ReaxFF calculation of delta values.
+#The value of delta' (eqn 3a) is given by:
+#delta'(i) = - Val_normal(i) + sum(j=1->neigh(i)) BO_ij'
+#There is a second valence used for delta'_boc (eqn 3b):
+#delta'_boc(i) = - Val_boc(i) + sum(j=1->neigh(i)) BO_ij'
+#There is a third valence used for delta_e (eqn 7) as part of the lone pair energy:
+#delta_e(i) = - Val_lp(i) + sum(j=1->neigh(i)) BO_ij
+#There is a fourth valence used for delta_angle (eqn 13e):
+#delta_angle(i) = - Val_angle(i) + sum(j=1->neigh(i)) BO_ij
+#species <core/shell> Val_normal Val_boc Val_lp Val_angle <4 x flags>
+reaxff1_valence 
+O     core     2.000000     4.000000     6.000000     4.000000 0 0 0 0
+Zr    core     4.000000     8.000000     4.000000     4.000000 0 0 0 0
+W     core     4.000000     8.000000     4.000000     4.000000 1 1 1 1
+#. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+#Specifies the parameters for the species wise overcoordination parameters.
+#Parameters p_boc3, p_boc4, p_boc5 are used to compute the functions f4 & f5
+#that correct the bond order (eqns 4e & 4f). The final parameter, p_ovun2, is
+#part of the overcoordination energy (eqn 11a).
+#species <core/shell> p_boc3 p_boc4 p_boc5 p_ovun2 <4 x flags>
+reaxff1_over
+O     core     3.551200    20.772400     0.507400    -3.614100 0 0 0 0
+Zr    core     0.214400    48.265700     0.000000    -4.369500 0 0 0 0
+Y     core    78.039800   127.923500     0.000000    -2.500000 1 1 1 1
+#. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+
+#Specifies the parameter for the species-wise undercoordination parameters.
+#p_ovun5 scales the undercoordination energy (eqn 12).
+#	species <core/shell> p_ovun5 <1 x flag>
+reaxff1_under
+O     core     1.338647 0
+Zr    core     0.216822 0
+W     core     0.216822 1
+
+#. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+
+#Specifies the parameters for the species-wise lone pair energy parameters.
+#n_lp_opt is the optimal number of lone pairs used to construct delta_lp (eqn 9).
+#p_lp2 is the parameter that scales the lone pair energy for each atom (eqn 10).
+#	species <core/shell> n_lp_opt p_lp2 <2 x flags>
+reaxff1_lonepair
+O     core     2.000000     0.179299 0 0
+Zr    core     0.000000     0.000000 0 0
+W     core     0.000000     0.000000 0 0
+#. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+#Specifies the parameters for the species-wise angle parameters.
+#p_val3 is used in the calculation of the ReaxFF function f7 (eqn 13b).
+#p_val5 is used in the calculation of the ReaxFF function f8 (eqn 13c).
+#	species <core/shell> p_val3 p_val5 <2 x flags>
+reaxff1_angle
+O     core     2.702500     2.922500 0 0
+Zr    core     3.367500     2.263200 0 0
+Y     core     2.986700     2.579100 1 1
+#. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+
+#Specifies the parameters for the species-wise morse parameters for the VDW energy (eqns 21a and 21b). In the final morse potential,
+#Dij = sqrt(Dij(i)*Dij(j)), alpha_ij = sqrt(alpha(i)*alpha(j)),
+#r_vdw = 2*sqrt(rvdw(i)*rvdw(j))
+#species <core/shell> alpha Dij rvdw gamma_w <4 x flags>
+reaxff1_morse
+O     core    10.218600   0.00381607     1.974100     7.771900 0 0 0 0
+Zr    core    11.663200   0.01075872     2.284200    48.530100 0 0 0 0
+W     core    11.663200   0.01075872     2.284200    48.530100 1 1 1 1
+
+#================================================================================
+#  Bond parameters 
+#================================================================================
+#Specifies the pairwise parameters between species that are to be used in the ReaxFF bond order calculation.
+#Here the uncorrected bond order is given by:
+#BO' = exp(p_bo1*(r/r_sigma)**p_bo2) + exp(p_bo3*(r/r_pi)**p_bo4) + exp(p_bo5*(r/r_pipi)**p_bo6)
+#The remaining parameters, r_sigma, r_pi, r_pipi, are input via the reaxff1_radii option.
+#The two sub-option words control if the bond order is corrected:
+#reaxff2_bo over bo13 => correct for overcoordination using f1 and 1-3 terms using f4 and f5
+#species1 <core/shell> species2 <core/shell> p_bo1 p_bo2 p_bo3 p_bo4 p_bo5 p_bo6 <6xflags>
+reaxff2_bo over bo13
+O  core O core -0.1290  7.0000 -0.1679  7.798 -0.2106 29.4721 0 0 0 0 0 0
+Zr core O core -0.1300 10.6008 -0.2000 15.000 -0.3000 36.0000 0 0 0 0 0 0
+W  core O core -0.1659  7.0537 -0.2000 15.000 -0.3000 36.0000 1 1 1 1 1 1
+reaxff2_bo 
+Zr core Zr core -0.1315 6.4024 -0.2000 15.0000 -0.2000 16.0000 0 0 0 0 0 0
+Zr core W  core -0.0923 7.4284 -0.2000 15.0000 -0.2000 16.0000 1 1 1 1 1 1
+#. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+#Specifies the pairwise parameters between species that are to be used in the ReaxFF bond order energy. 
+#Here the bond order energy is given by:
+#E_bond = - De_sigma*BO_sigma*exp(p_be1*(1-(BO_sigma)**p_be2)) - De_pi*BO_pi - De_pipi*BO_pipi
+#	species1 <core/shell> species2 <core/shell> De_sigma De_pi De_pipi p_be1 p_be2 <5xflags>
+reaxff2_bond 
+O  core O  core 3.807991 7.418202 1.734577  0.9810 0.8827 0 0 0 0 0
+Zr core O  core 4.876330 0.000000 0.000000  0.3505 0.1765 0 0 0 0 0
+Zr core Zr core 3.230767 0.000000 0.000000 -0.2541 0.5882 0 0 0 0 0
+W  core O  core 4.876330 0.000000 0.000000  0.3505 0.1765 1 1 1 1 1
+W  core Zr core 3.230767 0.000000 0.000000 -0.2541 0.5882 1 1 1 1 1
+W  core W  core 3.230767 0.000000 0.000000 -0.2541 0.5882 1 1 1 1 1
+#. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+#Specifies the pairwise parameters between species that are to be used in the ReaxFF overcoordination energy. 
+#Here the overcoordination energy is given by:
+#            E_over_i = (sum(j=>neigh(i)) p_ovun1(ij).De_sigma.BO_ij).delta_lpcorr(i)
+#                      ---------------------------------------------------------------
+#                       (delta_lpcorr(i) + Val_i) * (1 + exp(p_ovun2*delta_lpcorr(i))
+#species1 <core/shell> species2 <core/shell> p_ovun1 <1 x flag>
+reaxff2_over 
+O     core O     core     1.000000 0
+Zr    core O     core     0.405300 0
+Zr    core Zr    core     0.356400 0
+W     core O     core     0.405300 1
+W     core W     core     0.356400 1
+W     core Zr    core     0.356400 1
+#. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+#	Specifies pairwise Morse potential parameters for ReaxFF
+#	species1 <core/shell> species2 <core/shell> De alpha r0 r_sigma r_pi r_pipi <6 x flags>
+reaxff2_morse
+Zr core O core 0.006388 12.0284 1.7130 1.9555 -1.0000 -1.0000 0 0 0 0 0 0
+W  core O core 0.006388 12.0284 1.7130 1.9555 -1.0000 -1.0000 1 1 1 1 0 0
+Zr core W core 0.293600 12.2199 2.2035 2.5822 -1.0000 -1.0000 1 1 1 1 0 0
+#. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  . . . .. .   
+
+#================================================================================
+#  Angle parameters 
+#================================================================================
+#Specifies the parameters that determine the angular valence energy that depend on a triad of species in the ReaxFF force field.
+#Here species1 is the pivot atom of the three-body like term. Here the valence energy is given by:
+#  E_val = f7(BO_12)*f7(BO_13)*f8(delta(1))*p_val1*(1-exp(-p_val2*(theta_0 - theta)**2))
+#The function f7 is given by:
+#  f7(BO) = 1 - exp(-p_val3*BO**p_val4)
+#If not explicitly given, the value of p_val6 is taken from the global value.
+#species1 <core/shell> species2 <core/shell> species3 <core/shell> theta_00 p_val1 p_val2 p_val4 p_val7 <p_val6> <6 x flags>
+reaxff3_angle 
+O  core O  core O  core 80.7324 1.52387 1.4999 1.0783 0.6142 0.0000 0 0 0 0 0 0
+O  core Zr core O  core 80.0000 0.43364 1.2500 1.2000 0.5554 0.0000 0 0 0 0 0 0
+O  core Zr core Zr core  5.9871 0.39013 0.2147 3.0000 2.7977 0.0000 0 0 0 0 0 0
+Zr core O  core O  core 55.8643 0.86729 0.3771 1.4634 0.1000 0.0000 0 0 0 0 0 0
+O  core W  core O  core 80.0000 0.43364 1.2500 1.2000 0.5554 0.0000 1 1 1 1 1 1
+O  core W  core W  core  5.9871 0.39013 0.2147 3.0000 2.7977 0.0000 1 1 1 1 1 1
+W  core O  core O  core 55.8643 0.86729 0.3771 1.4634 0.1000 0.0000 1 1 1 1 1 1
+O  core W  core Zr core  8.1047 0.08870 0.1451 2.8519 0.1000 0.0000 1 1 1 1 1 1
+
+#================================================================================
+#  Torsion parameters 
+#================================================================================
+#Specifies the parameters that determine the torsional energy that depends on a quartet of species in the ReaxFF force field (eqn 16a).
+#Here the species are connected 1-2-3-4 to yield the relevant torsional angle.
+#V1, V2, V3 are the barrier heights for different powers of the cosine of phi.
+#p_tor1 is a scaling factor for an exponent in the V2 contribution.
+#p_cot1 is a scaling factor for the conjugation energy (eqn 17a).
+#spec1 <core/shell> spec2 <core/shell> spec3 <core/shell> spec4 <core/shell> V1 V2 V3 p_tor1 p_cot1 <5 x flags>
+reaxff4_torsion 
+X core O core O core X core 0.00138 1.00191 0.05470 -12.36700 0.00000 0 0 0 0 0
+
+#########################################################################################################################3
+##########################################################################################################################
+observables
+elastic
+ 1 1   161.8000
+elastic
+ 1 2    75.5000
+elastic
+ 4 4    29.4000
+bulk_modulus
+1.399
+end
+
+#library reaxff_bazro3
+
+dump dump.txt

@@ -1,0 +1,187 @@
+********************************************************************************
+*                       GENERAL UTILITY LATTICE PROGRAM                        *
+*                                 Julian Gale                                  *
+*                      Nanochemistry Research Institute                        *
+*                           Department of Chemistry                            *
+*                    Curtin University, Western Australia                      *
+********************************************************************************
+* Version = 4.3.5 * Last modified = 16th December 2015                         *
+********************************************************************************
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!! WARNING : bond order parameters are not specified for all pairs in ReaxFF
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+*  fit          - perform fitting run                                          *
+*  optimise     - perform optimisation run after fitting                       *
+*  conp         - constant pressure calculation                                *
+*  property     - calculate properties for final geometry                      *
+*  relax        - relax structure during fitting                               *
+*  distance     - calculate distances                                          *
+*  lbfgs        - use limited memory BFGS update                               *
+********************************************************************************
+
+  Job Started  at 14:16.30  3rd October    2017                               
+
+  Number of CPUs =     1
+
+
+  Total number of configurations input =   1
+
+********************************************************************************
+*  Input for Configuration =   1 : a1-ZrW2O8                                   *
+********************************************************************************
+
+  Formula = Zr4W8O32                                                    
+
+  Number of irreducible atoms/shells =       7
+
+
+  Total number atoms/shells =      44
+
+  Dimensionality = 3               :  Bulk   
+
+
+  Symmetry :
+
+  Crystal family                   :  Cubic       
+  Crystal class  (Groth - 1921)    :  Cubic Tetrahedral-Pentagonaldodecahed
+
+  Space group (noncentrosymmetric) :  P 21 3          
+
+  Patterson group                  :  P m -3   
+
+  Cartesian lattice vectors (Angstroms) :
+
+        9.180000    0.000000    0.000000
+        0.000000    9.180000    0.000000
+        0.000000    0.000000    9.180000
+
+  Cell parameters (Angstroms/Degrees):
+
+  a =       9.1800    alpha =  90.0000
+  b =       9.1800    beta  =  90.0000
+  c =       9.1800    gamma =  90.0000
+
+  Initial cell volume =         773.620632 Angs**3
+
+  Temperature of configuration =  0.000     K 
+
+  Pressure of configuration =         0.000 GPa 
+
+  Fractional coordinates of asymmetric unit :
+
+--------------------------------------------------------------------------------
+   No.  Atomic       x           y          z         Charge      Occupancy
+        Label      (Frac)      (Frac)     (Frac)        (e)         (Frac)  
+--------------------------------------------------------------------------------
+      1 Zr    c    0.001300 *  0.001300    0.001300     0.00000    1.000000    
+      2 W1    c    0.340500 *  0.340500    0.340500     0.00000    1.000000    
+      3 W2    c    0.599820 *  0.599820    0.599820     0.00000    1.000000    
+      4 O1    c    0.206310 *  0.439200 *  0.447000 *   0.00000    1.000000    
+      5 O2    c    0.786620 *  0.567600 *  0.555980 *   0.00000    1.000000    
+      6 O3    c    0.491770 *  0.491770    0.491770     0.00000    1.000000    
+      7 O4    c    0.233180 *  0.233180    0.233180     0.00000    1.000000    
+--------------------------------------------------------------------------------
+
+
+  Constraints : 
+
+--------------------------------------------------------------------------------
+  Constraint no.      Unconstrained     Constrained    Coefficient    Offset
+                         Variable         Variable
+--------------------------------------------------------------------------------
+           1              Strain 1        Strain 2       1.00000      0.0000
+           2              Strain 1        Strain 3       1.00000      0.0000
+           3                 1 x             1 y         1.00000      0.0000
+           4                 1 x             1 z         1.00000      0.0000
+           5                 2 x             2 y         1.00000      0.0000
+           6                 2 x             2 z         1.00000      0.0000
+           7                 3 x             3 y         1.00000      0.0000
+           8                 3 x             3 z         1.00000      0.0000
+           9                 6 x             6 y         1.00000      0.0000
+          10                 6 x             6 z         1.00000      0.0000
+          11                 7 x             7 y         1.00000      0.0000
+          12                 7 x             7 z         1.00000      0.0000
+--------------------------------------------------------------------------------
+
+
+  Distance calculation :
+
+
+  Cutoff for distances  =      2.000000 Angstroms
+
+--------------------------------------------------------------------------------
+  Asymmetric unit site  Full lattice sites    No.  Distance      No.  Distance
+      No.   At.No.            At.No.                (Angs)             (Angs) 
+--------------------------------------------------------------------------------
+       2   W1    core        O1    core         3    1.8150
+                             O4    core         1    1.7064
+--------------------------------------------------------------------------------
+       3   W2    core        O2    core         3    1.7861
+                             O3    core         1    1.7180
+--------------------------------------------------------------------------------
+       4   O1    core        W1    core         1    1.8150
+--------------------------------------------------------------------------------
+       5   O2    core        W2    core         1    1.7861
+--------------------------------------------------------------------------------
+       6   O3    core        W2    core         1    1.7180
+--------------------------------------------------------------------------------
+       7   O4    core        W1    core         1    1.7064
+--------------------------------------------------------------------------------
+
+
+
+********************************************************************************
+*  General input information                                                   *
+********************************************************************************
+
+  Species output for all configurations : 
+
+--------------------------------------------------------------------------------
+  Species    Type    Atomic    Atomic    Charge       Radii (Angs)     Library
+                     Number     Mass       (e)     Cova   Ionic  VDW   Symbol
+--------------------------------------------------------------------------------
+    Zr       Core       40      91.22   0.000000   1.560  0.000  2.330          
+    W1       Core       74     183.85   0.000000   1.370  0.000  2.040          
+    W2       Core       74     183.85   0.000000   1.370  0.000  2.040          
+    O1       Core        8      16.00   0.000000   0.730  0.000  1.360          
+    O2       Core        8      16.00   0.000000   0.730  0.000  1.360          
+    O3       Core        8      16.00   0.000000   0.730  0.000  1.360          
+    O4       Core        8      16.00   0.000000   0.730  0.000  1.360          
+--------------------------------------------------------------------------------
+
+
+  Lattice summation method               =    Ewald          (3-D)
+                                         =    Parry          (2-D)
+                                         =    Saunders et al (1-D)
+  Accuracy factor for lattice sums       =   12.000
+
+
+  Time limit = Infinity
+
+  Maximum range for interatomic potentials =    100000.000000 Angstroms
+
+  ReaxFF forcefield to be used
+
+  ReaxFF Coulomb cutoff =  10.0000 Ang
+  ReaxFF VDW     cutoff =  10.0000 Ang
+  ReaxFF H-bond  cutoff =   7.5000 Ang
+
+  ReaxFF pairwise bond order       threshold = 0.00010000000000
+  ReaxFF angle/torsion bond order  threshold = 0.00100000000000
+  ReaxFF bond order double product threshold = 0.00000100000000
+  ReaxFF bond order triple product threshold = 0.00000000100000
+  ReaxFF hydrogen-bond bond order  threshold = 0.01000000000000
+
+
+
+  **** No. of variables exceeds no. of observables ****
+  **** Number of variables   =   83                ****
+  **** Number of observables =   16                ****
+
+
+
+ Program terminated by processor     0 in             fit
+
