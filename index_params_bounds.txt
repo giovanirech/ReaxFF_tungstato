@@ -1,0 +1,70 @@
+FLAG	ESPECIES	OPCAO GULP	PARAMETRO	MINIMO	MAXIMO
+$0	W	reaxff_chi	chi	-20.000	20.000
+$1	W	reaxff_mu	mu	3.000	15.000
+$2	W	reaxff_gamma	gamma	0.100	1.500
+$3	W	reaxff1_radii	r_sigma	0.000	3.000
+$4	W	reaxff1_valence	Val_normal	1.000	5.000
+$5	W	reaxff1_valence	Val_boc	1.000	9.000
+$6	W	reaxff1_valence	Val_lp	1.000	8.000
+$7	W	reaxff1_valence	Val_angle	1.000	6.000
+$8	W	reaxff1_over	p_boc3	0.000	100.000
+$9	W	reaxff1_over	p_boc4	0.000	200.000
+$10	W	reaxff1_over	p_boc5	0.000	20.000
+$11	W	reaxff1_over	p_ovun2	-30.000	0.000
+$12	W	reaxff1_under	p_ovun5	-10.000	40.000
+$13	W	reaxff1_angle	p_val3	0.000	5.000
+$14	W	reaxff1_angle	p_val5	1.000	15.000
+$15	W	reaxff1_morse	alpha	2.000	15.000
+$16	W	reaxff1_morse	Dij	0.000	1.500
+$17	W	reaxff1_morse	rvdw	1.000	3.000
+$18	W	reaxff1_morse	gamma_w	0.100	120.000
+$19	W-O	reaxff2_bo over bo13	p_bo1	-0.300	-0.030
+$20	W-O	reaxff2_bo over bo14	p_bo2	2.000	12.000
+$21	W-O	reaxff2_bo over bo15	p_bo3	-0.700	-0.050
+$22	W-O	reaxff2_bo over bo16	p_bo4	5.000	30.000
+$23	W-O	reaxff2_bo over bo17	p_bo5	-0.700	0.000
+$24	W-O	reaxff2_bo over bo18	p_bo6	0.000	55.000
+$25	W-Zr	reaxff2_bo	p_bo1	-0.600	-0.010
+$26	W-Zr	reaxff2_bo	p_bo2	3.000	12.000
+$27	W-Zr	reaxff2_bo	p_bo3	-0.500	0.000
+$28	W-Zr	reaxff2_bo	p_bo4	0.000	15.000
+$29	W-Zr	reaxff2_bo	p_bo5	-0.500	0.500
+$30	W-Zr	reaxff2_bo	p_bo6	5.000	30.000
+$31	W-W	reaxff2_bo	p_bo1	-0.600	-0.010
+$32	W-W	reaxff2_bo	p_bo2	3.000	12.000
+$33	W-W	reaxff2_bo	p_bo3	-0.500	0.000
+$34	W-W	reaxff2_bo	p_bo4	0.000	15.000
+$35	W-W	reaxff2_bo	p_bo5	-0.500	0.500
+$36	W-W	reaxff2_bo	p_bo6	5.000	30.000
+$37	W-O	reaxff2_bond	De_sigma	-10.000	10.000
+$38	W-O	reaxff2_bond	p_be1	-1.500	1.500
+$39	W-O	reaxff2_bond	p_be2	0.005	20.000
+$40	W-Zr	reaxff2_bond	De_sigma	-10.000	10.000
+$41	W-Zr	reaxff2_bond	p_be1	-1.500	1.500
+$42	W-Zr	reaxff2_bond	p_be2	0.005	20.000
+$43	W-W	reaxff2_bond	De_sigma	-10.000	10.000
+$44	W-W	reaxff2_bond	p_be1	-1.500	1.500
+$45	W-W	reaxff2_bond	p_be2	0.005	20.000
+$46	W-O	reaxff2_over	p_ovun1	0.010	1.500
+$47	W-W	reaxff2_over	p_ovun1	0.010	1.500
+$48	W-Zr	reaxff2_over	p_ovun1	0.010	1.500
+$49	W-O-O	reaxff3_angle	theta_00	0.000	180.000
+$50	W-O-O	reaxff3_angle	p_val1	0.005	3.000
+$51	W-O-O	reaxff3_angle	p_val2	0.050	15.000
+$52	W-O-O	reaxff3_angle	p_val4	1.000	6.000
+$53	W-O-O	reaxff3_angle	p_val7	-0.300	5.000
+$54	W-O-W	reaxff3_angle	theta_00	0.000	180.000
+$55	W-O-W	reaxff3_angle	p_val1	0.005	3.000
+$56	W-O-W	reaxff3_angle	p_val2	0.050	15.000
+$57	W-O-W	reaxff3_angle	p_val4	1.000	6.000
+$58	W-O-W	reaxff3_angle	p_val7	-0.300	5.000
+$59	O-W-O	reaxff3_angle	theta_00	0.000	180.000
+$60	O-W-O	reaxff3_angle	p_val1	0.005	3.000
+$61	O-W-O	reaxff3_angle	p_val2	0.050	15.000
+$62	O-W-O	reaxff3_angle	p_val4	1.000	6.000
+$63	O-W-O	reaxff3_angle	p_val7	-0.300	5.000
+$64	W-O-Zr	reaxff3_angle	theta_00	0.000	180.000
+$65	W-O-Zr	reaxff3_angle	p_val1	0.005	3.000
+$66	W-O-Zr	reaxff3_angle	p_val2	0.050	15.000
+$67	W-O-Zr	reaxff3_angle	p_val4	1.000	6.000
+$68	W-O-Zr	reaxff3_angle	p_val7	-0.300	5.000
