@@ -15,6 +15,7 @@ penalidade = 50000000
 
 arquivo_resultados = 'resultados.txt'
 arquivo_modelo_potencial  = 'modelo_potencial_reaxFF.txt'
+arquivo_index_bounds = 'index_params_bounds.txt'
 
 def gera_entrada_gulp(P, imagem, nome_arquivo):
     f = open(nome_arquivo + '.gin', 'w')
@@ -72,7 +73,7 @@ def calcula_custo(nome_arquivo, imagem, shift):
     if verifica_final_execucao(nome_arquivo):
         energia_gulp = encontra_energia_gulp(nome_arquivo)
         energia_imagem = imagem.get_potential_energy()
-        custo = abs(energia_gulp+shift-energia_imagem)
+        custo = abs(energia_gulp + shift - energia_imagem)
     else:
         custo = penalidade
     
@@ -112,6 +113,21 @@ def verifica_final_execucao(nome_arquivo):
 
     return True
 
+def coleta_bounds_do_arquivo(arquivo_index_bounds):
+    with open(arquivo_index_bounds, 'r') as f:
+        linhas = f.readlines()
+    bounds = []
+    string_header = ''
+    for l in linhas:
+        if '$' in l:
+            flag, especie, opcao, parametro, minimo, maximo = l.split('\t')
+            bounds.append((float(minimo), float(maximo.strip('\n'))))
+            string_header = string_header + '\t' + opcao + '_' + parametro + especie
+    bounds.append((-30000,30000))#Shift de energia
+    string_header = string_header + 'shift_energia\n'
+    return bounds, string_header
+            
+
 def encontra_energia_gulp(nome_arquivo):
     f = open(nome_arquivo+'.gout',"r")
     linhas = f.readlines()
@@ -124,19 +140,21 @@ def encontra_energia_gulp(nome_arquivo):
             return float(l.split()[4])
     return penalidade
 
-def escreve_arquivo_saida(arquivo_resultados,custo,P0,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12,P13,P14):
+def escreve_arquivo_saida(arquivo_resultados,ID,custo,P):
     if os.path.exists(arquivo_resultados):
         append_write = 'a' 
     else:
         append_write = 'w' 
-        
+    string_entrada =   str(ID)+'\t'+str(custo)+'\t'
+    for p in P:
+        string_entrada = string_entrada + str(p) + '\t'
+    string_entrada = string_entrada + '\n'
     with open(arquivo_resultados, append_write) as f:
-        f.write('%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n'%(custo,P0,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12,P13,P14))  
+        f.write(string_entrada)  
 
-def acessa_arquivo_lock(arquivo_resultados,custo,P0,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12,P13,P14):
-    
+def acessa_arquivo_lock(arquivo_resultados,ID,custo,P):
     with FileLock('lock'):
-        escreve_arquivo_saida(arquivo_resultados,custo,P0,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12,P13,P14)
+        escreve_arquivo_saida(arquivo_resultados,ID,custo,P)
         
 def funcao_principal(P):
     #print os.getcwd()
@@ -154,7 +172,7 @@ def funcao_principal(P):
         nome_arquivo = 'tungstato_ase_Im' + str(im) + '_Pot' + str(i)
         gera_entrada_gulp(P, imagens[im], nome_arquivo)
         executa_gulp(nome_arquivo)
-        custo= calcula_custo(nome_arquivo, imagens[im], P[14])
+        custo = calcula_custo(nome_arquivo, imagens[im], P[-1])
         custos.append(custo)
         os.remove(nome_arquivo+'.gin')
         os.remove(nome_arquivo+'.gout')
@@ -163,23 +181,13 @@ def funcao_principal(P):
     os.rmdir(str(i))
     os.chdir('..')
 
-    print (' Potencial:%s '%(i)).center(70, '#')
-    print 'Custo: %s'%custo
-    print '   Charge core O:%s'%(P[0])
-    print '   buck Zr-O: A=%s, rho=%s'%(P[1], P[2])
-    print '   buck W-O:  A=%s, rho=%s'%(P[3], P[4])
-    print '   buck O-O:  A=%s, rho=%s, C=%s'%(P[5], P[6], P[7])
-    print '   spring O:  K= %s'%P[8]
-    print '   three O-W-O: k = %s'%(P[9])
-    print '   three O-Zr-O: k = %s'%(P[10])
-    print '   covexp W-O: D= %s, a= %s, r0= %s'%(P[11], P[12], P[13])
-    print '   shift: %s'%P[14]
+    print ' Potencial:%s '%(i), 'Custo: %s'%custo, time.ctime()
     print '###########################################################'
     #print os.getcwd()
     
     
     #write to file
-    acessa_arquivo_lock(arquivo_resultados,custo,P[0],P[1],P[2],P[3],P[4],P[5],P[6],P[7],P[8],P[9],P[10],P[11],P[12],P[13],P[14])
+    acessa_arquivo_lock(arquivo_resultados,i,custo,P)
     
   
 
@@ -199,23 +207,15 @@ def parallel_run():
 
 #======================================================================================
 if __name__=='__main__':
-    bounds=[(0,1), #charge O_core
-            (10, 10000),(0.1, 0.5), #buck Zr-O: A, rho
-            (10, 10000), (0.1, 0.5), #buck W-O: A, rho
-            (10, 30000), (0.1,0.9), (1,100), #buck O-O: A, rho, C
-            (5, 90), #spring O
-            (0,5.0), #3-body O-Zr-O
-            (0,5.0), #3-body O-W-O
-            (1, 10), (10,50), (0.1, 3), #covexp W-O: D, a, r0
-            (-70000, 0)#shift energia
-           ]
+    bounds, string_header = coleta_bounds_do_arquivo(arquivo_index_bounds)
     start_time = time.time()
     
     if not os.path.exists('tmp'):
         os.mkdir('tmp')
-        
+    
+    
     with open(arquivo_resultados, 'w') as f:
-        f.write('#Custo\tchargeO\tbuckZrA\tbuckZrRho\tbuckWA\tbuckWRho\tbuckOA\tbuckORho\tbuckOC\tspringO\t3bOZrO\t3bOWO\tcovexpWD\tcovexpWa\tcovexpWr0\tshiftE\n')
+        f.write(string_header)
         
     solution = parallel_run()
     
