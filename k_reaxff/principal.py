@@ -19,7 +19,7 @@ arquivo_index_bounds = 'index_params_bounds.txt'
 
 def gera_entrada_gulp(P, imagem, nome_arquivo):
     f = open(nome_arquivo + '.gin', 'w')
-    f.write('conp prop\n')
+    f.write('conv prop\n')
     f.write('cell\n')
     f.write('%s %s %s %s %s %s\n'%tuple(imagem.get_cell_lengths_and_angles()))
     f.write('cartesian\n')
@@ -37,7 +37,7 @@ def gera_entrada_gulp(P, imagem, nome_arquivo):
 
 def altera_arquivo_potencial(arquivo_modelo_potencial, P):
     dic_potenciais = cria_dicionario_potenciais(P)
-    with open(arquivo_modelo_potencial,'r') as f_potencial:
+    with open('../../'+arquivo_modelo_potencial,'r') as f_potencial:
         linhas_modelo_potencial = f_potencial.readlines()        
     linhas_modelo_potencial_alterado = list(linhas_modelo_potencial)        
     chaves = dic_potenciais.keys()
@@ -181,8 +181,7 @@ def funcao_principal(P):
     os.rmdir(str(i))
     os.chdir('..')
 
-    print ' Potencial:%s '%(i), 'Custo: %s'%custo, time.ctime()
-    print '###########################################################'
+    print ' Potencial:%s     Custo: %s \n %s \n###########################################################' %(i, custo, time.ctime())
     #print os.getcwd()
     
     
