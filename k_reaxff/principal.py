@@ -45,8 +45,8 @@ def altera_arquivo_potencial(arquivo_modelo_potencial, P):
     for c in chaves:
         i = 0
         for l in linhas_modelo_potencial_alterado:
-            if l.find(c):
-                linhas_modelo_potencial_alterado[i] = l.replace(c,str(dic_potenciais[c]))
+            if c in l:
+                linhas_modelo_potencial_alterado[i] = l.replace(c,'%.4f'%(dic_potenciais[c]))
             i = i + 1
 
     return linhas_modelo_potencial_alterado
