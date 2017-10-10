@@ -14,8 +14,8 @@ caminho_gulp = '/opt/gulp-4.4/Src/gulp'
 penalidade = 50000000
 
 arquivo_resultados = 'resultados.txt'
-arquivo_modelo_potencial  = 'modelo_potencial_reaxFF.txt'
-arquivo_index_bounds = 'index_params_bounds.txt'
+arquivo_modelo_potencial  = 'modelo_potencial_reaxFF.pot'
+arquivo_index_bounds = 'index_params_bounds.pot'
 
 def gera_entrada_gulp(P, imagem, nome_arquivo):
     f = open(nome_arquivo + '.gin', 'w')
