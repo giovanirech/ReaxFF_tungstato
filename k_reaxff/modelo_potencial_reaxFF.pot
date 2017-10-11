@@ -157,9 +157,9 @@ reaxff2_bond
 O  core O  core 3.807991 7.418202 1.734577  0.9810 0.8827
 Zr core O  core 4.876330 0.000000 0.000000  0.3505 0.1765
 Zr core Zr core 3.230767 0.000000 0.000000 -0.2541 0.5882
-W  core O  core $37$ 0.000000 $38$ $39$
-W  core Zr core $40$ 0.000000 $41$ $42$
-W  core W  core $43$ 0.000000 $44$ $45$
+W  core O  core $37$ 0.000000 0.000000 $38$ $39$
+W  core Zr core $40$ 0.000000 0.000000 $41$ $42$
+W  core W  core $43$ 0.000000 0.000000 $44$ $45$
 #. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
 #Specifies the pairwise parameters between species that are to be used in the ReaxFF overcoordination energy. 
