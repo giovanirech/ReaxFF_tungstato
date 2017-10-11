@@ -28,13 +28,13 @@ $25$	W-Zr	reaxff2_bo	p_bo1	-0.600	-0.010
 $26$	W-Zr	reaxff2_bo	p_bo2	3.000	12.000
 $27$	W-Zr	reaxff2_bo	p_bo3	-0.500	0.000
 $28$	W-Zr	reaxff2_bo	p_bo4	0.000	15.000
-$29$	W-Zr	reaxff2_bo	p_bo5	-0.500	0.500
+$29$	W-Zr	reaxff2_bo	p_bo5	-0.500	0.000
 $30$	W-Zr	reaxff2_bo	p_bo6	5.000	30.000
 $31$	W-W	reaxff2_bo	p_bo1	-0.600	-0.010
 $32$	W-W	reaxff2_bo	p_bo2	3.000	12.000
 $33$	W-W	reaxff2_bo	p_bo3	-0.500	0.000
 $34$	W-W	reaxff2_bo	p_bo4	0.000	15.000
-$35$	W-W	reaxff2_bo	p_bo5	-0.500	0.500
+$35$	W-W	reaxff2_bo	p_bo5	-0.500	0.000
 $36$	W-W	reaxff2_bo	p_bo6	5.000	30.000
 $37$	W-O	reaxff2_bond	De_sigma	-10.000	10.000
 $38$	W-O	reaxff2_bond	p_be1	-1.500	1.500
