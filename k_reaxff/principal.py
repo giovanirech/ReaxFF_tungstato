@@ -58,7 +58,7 @@ def cria_dicionario_potenciais(P):
     i = 0
     dic_potenciais = {}
     for p in P:
-        chave = '$' + str(i)
+        chave = '$' + str(i) + '$'
         dic_potenciais[chave] = P[i]
         i = i + 1
     return dic_potenciais
