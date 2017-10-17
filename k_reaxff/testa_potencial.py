@@ -163,7 +163,7 @@ def altera_arquivo_potencial(arquivo_modelo_potencial, P):
         i = 0
         for l in linhas_modelo_potencial_alterado:
             if c in l:
-                linhas_modelo_potencial_alterado[i] = l.replace(c,'%.4f'%(dic_potenciais[c]))
+                linhas_modelo_potencial_alterado[i] = l.replace(c,'%.4f'%(float(dic_potenciais[c])))
             i = i + 1
 
     return linhas_modelo_potencial_alterado
@@ -408,7 +408,7 @@ def coleta_potencial_por_indice(indice):
     with open('enum_resultados.txt', 'r') as f:
         linhas = f.readlines()
     for l in linhas:
-        if l.split('\t')[0]==indice:
+        if str(l.split('\t')[0])==str(indice):
             Custo = float(l.split('\t')[1])
             P = l.split('\t')[2:-2]
             shift_E = l.split('\t')[-2]
@@ -487,7 +487,7 @@ else:
     with open('resultados.txt', 'r') as f:
         linhas = f.readlines()
     for l in linhas:
-        if l.split('\t')[0] == indice_potencial:
+        if str(l.split('\t')[0]) == str(indice_potencial):
             encontrou_potencial = True
 
     if not encontrou_potencial:
