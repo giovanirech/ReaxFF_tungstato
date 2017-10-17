@@ -9,8 +9,10 @@ use('Agg')
 
 
 caminho_gulp = '/opt/gulp-4.4/Src/'
+arquivo_modelo_potencial  = 'modelo_potencial_reaxFF.pot'
 
-def cria_arquivo_entrada(id_arquivo, chargeO, buckZrA, buckZrRho, buckWA, buckWRho, buckOA, buckORho, buckOC, springO, threebOZrO, threebOWO, covexpWD, covexpWa, covexpWr0):
+def cria_arquivo_entrada(id_arquivo, P):
+    f = open('%s.gin'%id_arquivo, 'w')
     linhas = ['opti prop conp comp free zsisa\n',
               'name alfa-ZrW2O8_2K\n',
               'cell\n',
@@ -23,10 +25,6 @@ def cria_arquivo_entrada(id_arquivo, chargeO, buckZrA, buckZrRho, buckWA, buckWR
               'O2 core 0.78662 0.5676 0.55598\n',
               'O3 core 0.49177 0.49177 0.49177\n',
               'O4 core 0.23318 0.23318 0.23318\n',
-              'O1 shel 0.20631 0.4392 0.44700\n',
-              'O2 shel 0.78662 0.5676 0.55598\n',
-              'O3 shel 0.49177 0.49177 0.49177\n',
-              'O4 shel 0.23318 0.23318 0.23318\n',
               'space\n',
               '198\n',
               'temperature 2.0\n',
@@ -43,10 +41,6 @@ def cria_arquivo_entrada(id_arquivo, chargeO, buckZrA, buckZrRho, buckWA, buckWR
               'O2 core 0.7876 0.5694 0.5565\n',
               'O3 core 0.4916 0.4916 0.4916\n',
               'O4 core 0.2336 0.2336 0.2336\n',
-              'O1 shel 0.2071 0.4378 0.4470\n',
-              'O2 shel 0.7876 0.5694 0.5565\n',
-              'O3 shel 0.4916 0.4916 0.4916\n',
-              'O4 shel 0.2336 0.2336 0.2336\n',
               'space\n',
               '198\n',
               'temperature 50.0\n',
@@ -65,10 +59,6 @@ def cria_arquivo_entrada(id_arquivo, chargeO, buckZrA, buckZrRho, buckWA, buckWR
               'O2 core 0.7876 0.5694 0.5565\n',
               'O3 core 0.4916 0.4916 0.4916\n',
               'O4 core 0.2336 0.2336 0.2336\n',
-              'O1 shel 0.2071 0.4378 0.4470\n',
-              'O2 shel 0.7876 0.5694 0.5565\n',
-              'O3 shel 0.4916 0.4916 0.4916\n',
-              'O4 shel 0.2336 0.2336 0.2336\n',
               'space\n',
               '198\n',
               'temperature 100.0\n',
@@ -87,10 +77,6 @@ def cria_arquivo_entrada(id_arquivo, chargeO, buckZrA, buckZrRho, buckWA, buckWR
               'O2 core 0.7876 0.5694 0.5565\n',
               'O3 core 0.4916 0.4916 0.4916\n',
               'O4 core 0.2336 0.2336 0.2336\n',
-              'O1 shel 0.2071 0.4378 0.4470\n',
-              'O2 shel 0.7876 0.5694 0.5565\n',
-              'O3 shel 0.4916 0.4916 0.4916\n',
-              'O4 shel 0.2336 0.2336 0.2336\n',
               'space\n',
               '198\n',
               'temperature 150.0\n',
@@ -109,10 +95,6 @@ def cria_arquivo_entrada(id_arquivo, chargeO, buckZrA, buckZrRho, buckWA, buckWR
               'O2 core 0.7876 0.5694 0.5565\n',
               'O3 core 0.4916 0.4916 0.4916\n',
               'O4 core 0.2336 0.2336 0.2336\n',
-              'O1 shel 0.2071 0.4378 0.4470\n',
-              'O2 shel 0.7876 0.5694 0.5565\n',
-              'O3 shel 0.4916 0.4916 0.4916\n',
-              'O4 shel 0.2336 0.2336 0.2336\n',
               'space\n',
               '198\n',
               'temperature 200.0\n',
@@ -131,10 +113,6 @@ def cria_arquivo_entrada(id_arquivo, chargeO, buckZrA, buckZrRho, buckWA, buckWR
               'O2 core 0.7876 0.5694 0.5565\n',
               'O3 core 0.4916 0.4916 0.4916\n',
               'O4 core 0.2336 0.2336 0.2336\n',
-              'O1 shel 0.2071 0.4378 0.4470\n',
-              'O2 shel 0.7876 0.5694 0.5565\n',
-              'O3 shel 0.4916 0.4916 0.4916\n',
-              'O4 shel 0.2336 0.2336 0.2336\n',
               'space\n',
               '198\n',
               'temperature 250.0\n',
@@ -153,46 +131,52 @@ def cria_arquivo_entrada(id_arquivo, chargeO, buckZrA, buckZrRho, buckWA, buckWR
               'O2 core 0.7876 0.5694 0.5565\n',
               'O3 core 0.4916 0.4916 0.4916\n',
               'O4 core 0.2336 0.2336 0.2336\n',
-              'O1 shel 0.2071 0.4378 0.4470\n',
-              'O2 shel 0.7876 0.5694 0.5565\n',
-              'O3 shel 0.4916 0.4916 0.4916\n',
-              'O4 shel 0.2336 0.2336 0.2336\n',
               'space\n',
               '198\n',
               'temperature 293.0\n',
-              '\n',
-              '################################################\n',
-              'species 4\n',
-              'Zr core 4.000000\n',
-              'W core 6.000000\n',
-              'O core %s\n'%chargeO,
-              'O shel %s\n'%(-2-float(chargeO)),
-              'buck\n',
-              'Zr core O shel %s %s 0.00 0.00 12.00 0 0 0\n'%(buckZrA, buckZrRho),
-              'buck\n',
-              'W core O shel %s %s 0.00 0.00 12.00 0 0 0\n'%(buckWA,buckWRho),
-              'buck\n',
-              'O shel O shel %s %s %s 0.00 12.00 0 0 0\n'%(buckOA, buckORho, buckOC),
-              'spring\n',
-              'O %s 0\n'%(springO),
-              '####tres corpos\n',
-              'three\n',
-              'W core O shel O shel %s 109.47 1.9 1.9 3.0\n'%(threebOWO),
-              'Zr core O shel O shel %s 90.0 2.3 2.3 3.0\n'%(threebOZrO),
-              '####covexp\n',
-              'covexp\n',
-              'W core O shel %s %s %s 0.0 2.0 0 0 0\n'%(covexpWD, covexpWa, covexpWr0),
-              '#################################################\n',
-              'time 4 hours\n',
-              '#################################################\n',
-              'maxcyc opt 10000\n',
-              'dump dump_%s.txt\n'%(id_arquivo)]
+              '\n']
+    for l in linhas:
+        f.write(l)
+    linhas_potencial_alterado = altera_arquivo_potencial(arquivo_modelo_potencial, P)
+    for l in linhas_potencial_alterado:
+        f.write(l)
     
-    with open('%s.gin'%id_arquivo, 'w') as f:
-        for l in linhas:
-            f.write(l)
+    linhas_final = ['#################################################\n',
+                    'time 4 hours\n',
+                    '#################################################\n',
+                    'maxcyc opt 10000\n',
+                    'dump dump_%s.txt\n'%(id_arquivo)]
+    for l in linhas_final:
+        f.write(l)
+    
+    f.close()
+    
 
-            
+def altera_arquivo_potencial(arquivo_modelo_potencial, P):
+    dic_potenciais = cria_dicionario_potenciais(P)
+    with open('../'+arquivo_modelo_potencial,'r') as f_potencial:
+        linhas_modelo_potencial = f_potencial.readlines()        
+    linhas_modelo_potencial_alterado = list(linhas_modelo_potencial)        
+    chaves = dic_potenciais.keys()
+
+    for c in chaves:
+        i = 0
+        for l in linhas_modelo_potencial_alterado:
+            if c in l:
+                linhas_modelo_potencial_alterado[i] = l.replace(c,'%.4f'%(dic_potenciais[c]))
+            i = i + 1
+
+    return linhas_modelo_potencial_alterado
+
+def cria_dicionario_potenciais(P):
+    i = 0
+    dic_potenciais = {}
+    for p in P:
+        chave = '$' + str(i) + '$'
+        dic_potenciais[chave] = P[i]
+        i = i + 1
+    return dic_potenciais
+           
 def verifica_final_execucao(id_arquivo):
     with open('%s.gout'%id_arquivo,'r') as f:
         linhas_arquivo_saida_gulp = f.readlines()
@@ -423,16 +407,20 @@ def busca_constantes_elasticas (id_arquivo):
 def coleta_potencial_por_indice(indice):
     with open('enum_resultados.txt', 'r') as f:
         linhas = f.readlines()
-    print linhas[indice]
-    return linhas[indice].split('\t')[1:]
+    for l in linhas:
+        if l.split('\t')[0]==indice:
+            Custo = float(l.split('\t')[1])
+            P = l.split('\t')[2:-2]
+            shift_E = l.split('\t')[-2]
+    return Custo, P, shift_E
 
 #------------------------------------------------
-def testa_potencial_grafico(chargeO, buckZrA, buckZrRho, buckWA, buckWRho, buckOA, buckORho, buckOC, springO, threebOZrO, threebOWO, covexpWD, covexpWa, covexpWr0):
-    id_arquivo = getrandbits(64)
+def testa_potencial_grafico(indice_potencial, Custo, P, shift_E):
+    id_arquivo = indice_potencial
     print 'ID de arquivo:%s'%id_arquivo
     os.mkdir(str(id_arquivo))
     os.chdir(str(id_arquivo))
-    cria_arquivo_entrada(id_arquivo, chargeO, buckZrA, buckZrRho, buckWA, buckWRho, buckOA, buckORho, buckOC, springO, threebOZrO, threebOWO, covexpWD, covexpWa, covexpWr0)
+    cria_arquivo_entrada(id_arquivo, P)
     print 'Executando GULP... Isto pode demorar vários minutos'
     os.system('timeout 10800 %sgulp < %s.gin > %s.gout'%(caminho_gulp, id_arquivo, id_arquivo))
     finalizou_sem_erros = verifica_final_execucao(id_arquivo)
@@ -491,55 +479,21 @@ c11_exp = np.asarray([ 161.791704,  161.889288,  161.586264,  161.181804,  160.8
 
 #Le potencial de input
 #Custo chargeO buckZrA buckZrRho buckWA buckWRho buckOA buckORho buckOC springO 3bOZrO 3bOWO covexpWD covexpWa covexpWr0 shiftE
-if len(sys.argv)<2:
-    print u'O número correto (15 ou 1) de argumentos deve ser fornecido. Utilize -h para mais informaçoes'
-elif str(sys.argv[1])=='-h':
-    print u'Forneça os parametros de potencial na seguinte ordem'
-    print 'chargeO buckZrA buckZrRho buckWA buckWRho buckOA buckORho buckOC springO 3bOZrO 3bOWO covexpWD covexpWa covexpWr0 shiftE'
-    print 'alternativamente, você pode fornecer o indice do potencial contido no arquivo enum_resultados.txt gerado pelo script enumera_resultados.py'
-elif len(sys.argv) == 2:
-    indice_potencial = int(sys.argv[1])
-    (Custo, chargeO, buckZrA, buckZrRho, buckWA, buckWRho, buckOA, buckORho, buckOC, springO, threebOZrO, threebOWO, covexpWD, covexpWa, covexpWr0, shiftE) = coleta_potencial_por_indice(indice_potencial)
-    print '--> Custo: %s'%Custo
-    print 'Potencial selecionado:'
-    print '   Carga O_core: %s'%chargeO
-    print '   Buckingham Zr-O: A= %s,  rho= %s,  C= 0'%(buckZrA, buckZrRho)
-    print '   Buckingham W-O: A= %s,  rho= %s,  C= 0'%(buckWA, buckWRho)
-    print '   Buckingham O-O: A= %s,  rho= %s,  C= %s'%(buckOA, buckORho, buckOC)
-    print '   Spring O_core-O_shell: %s'%springO
-    print '   3-Body O-Zr-O: %s'%threebOZrO
-    print '   3-Body O-W-O: %s'%threebOWO 
-    print '   Covexp W-O: D= %s,  a= %s,  r0=%s'%(covexpWD,covexpWa,covexpWr0) 
-    print '   Shift Energia: %s'%shiftE
-    testa_potencial_grafico(chargeO, buckZrA, buckZrRho, buckWA, buckWRho, buckOA, buckORho, buckOC, springO, threebOZrO, threebOWO, covexpWD, covexpWa, covexpWr0)
-elif len(sys.argv)!=16:
-    print u'O número correto (15 ou 1) de argumentos deve ser fornecido. Utilize -h para mais informaçoes'
+if len(sys.argv)!=2:
+    print u'O número de identificação do potencial deve ser fornecido. Verifique o arquivo "resultados.txt"'
 else:
-    chargeO = sys.argv[1]
-    buckZrA = sys.argv[2]
-    buckZrRho = sys.argv[3]
-    buckWA = sys.argv[4]
-    buckWRho = sys.argv[5]
-    buckOA = sys.argv[6]
-    buckORho = sys.argv[7]
-    buckOC = sys.argv[8]
-    springO = sys.argv[9]
-    threebOZrO = sys.argv[10]
-    threebOWO = sys.argv[11]
-    covexpWD = sys.argv[12]
-    covexpWa  = sys.argv[13]
-    covexpWr0 = sys.argv[14]
-    shiftE = sys.argv[15]
-    print 'Potencial selecionado:'
-    print '   Carga O_core: %s'%chargeO
-    print '   Buckingham Zr-O: A= %s,  rho= %s,  C= 0'%(buckZrA, buckZrRho)
-    print '   Buckingham W-O: A= %s,  rho= %s,  C= 0'%(buckWA, buckWRho)
-    print '   Buckingham O-O: A= %s,  rho= %s,  C= %s'%(buckOA, buckORho, buckOC)
-    print '   Spring O_core-O_shell: %s'%springO
-    print '   3-Body O-Zr-O: %s'%threebOZrO
-    print '   3-Body O-W-O: %s'%threebOWO 
-    print '   Covexp W-O: D= %s,  a= %s,  r0=%s'%(covexpWD,covexpWa,covexpWr0) 
-    print '   Shift Energia: %s'%shiftE
-    testa_potencial_grafico(chargeO, buckZrA, buckZrRho, buckWA, buckWRho, buckOA, buckORho, buckOC, springO, threebOZrO, threebOWO, covexpWD, covexpWa, covexpWr0)
+    indice_potencial = int(sys.argv[1])
+    encontrou_potencial = False
+    with open('resultados.txt', 'r') as f:
+        linhas = f.readlines()
+    for l in linhas:
+        if l.split('\t')[0] == indice_potencial:
+            encontrou_potencial = True
+
+    if not encontrou_potencial:
+        print u'Potencial não encontrado'
+    else:
+        Custo, P, shift_E = coleta_potencial_por_indice(indice_potencial)
+        testa_potencial_grafico(indice_potencial, Custo, P, shift_E)
 
         
