@@ -405,7 +405,7 @@ def busca_constantes_elasticas (id_arquivo):
 
 #---------------------------------------------------------------
 def coleta_potencial_por_indice(indice):
-    with open('enum_resultados.txt', 'r') as f:
+    with open('resultados.txt', 'r') as f:
         linhas = f.readlines()
     for l in linhas:
         if str(l.split('\t')[0])==str(indice):
